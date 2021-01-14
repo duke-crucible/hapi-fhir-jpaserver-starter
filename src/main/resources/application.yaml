@@ -26,6 +26,26 @@ spring:
     job:
       enabled: false
 
+# OAuth2 Resource Server support as per
+# https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-security
+#  security:
+#    oauth2:
+#      resourceserver:
+
+# JWK Set URI Method
+#        jwt:
+#          jwk-set-uri: "https://example.com/oauth2/default/v1/keys"
+
+# OIDC Issuer URI Method
+#        jwt:
+#          issuer-uri: "https://dev-123456.oktapreview.com/oauth2/default/"
+
+# Opaque Token Method
+#        opaquetoken:
+#          introspection-uri: "https://example.com/check-token"
+#          client-id: "my-client-id"
+#          client-secret: "my-client-secret"
+
 hapi:
   fhir:
     ### enable to set the Server URL
