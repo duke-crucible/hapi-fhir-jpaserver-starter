@@ -32,22 +32,26 @@ public class GenericOAuth2Config extends WebSecurityConfigurerAdapter {
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // Authenticate with the appropriate method if the values are set.
-        // We allow any authenticated user full access at this stage.
-        // TODO:  We could add the ability to configure scopes to have specific access levels if desired.
-        //        Currently, authz is set to allow any authenticated request.
+        /* Authenticate with the appropriate method if the values are set.
+           We allow any authenticated user full access for now, but if specific
+           tiers of access are required for different scopes that could be configured
+           and added here.
+        */
         if (!(opaqueIntrospectionUri.isEmpty())) {
-            http
+            http.csrf()
+                .disable()
                 .authorizeRequests(authz -> authz.anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2
                     .opaqueToken(token -> token.introspectionUri(this.opaqueIntrospectionUri)
                     .introspectionClientCredentials(this.opaqueClientId, this.opaqueClientSecret)));        
         } else if (!(this.jwtJwkSetUri.isEmpty()) || !(this.jwtIssuerUri.isEmpty())){
-            http
+            http.csrf()
+                .disable()
                 .authorizeRequests(authz -> authz.anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt());            
         } else {
-            http
+            http.csrf()
+                .disable()
                 .authorizeRequests()
                 .anyRequest()
                 .permitAll();
