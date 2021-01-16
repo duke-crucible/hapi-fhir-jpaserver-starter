@@ -48,7 +48,7 @@ public class GenericOAuth2Config extends WebSecurityConfigurerAdapter {
             http.csrf()
                 .disable()
                 .authorizeRequests(authz -> authz.anyRequest().authenticated())
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt());            
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt());       
         } else {
             http.csrf()
                 .disable()
