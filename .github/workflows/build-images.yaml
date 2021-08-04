@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - "image/v*"
+    branches:
+      - 'master'
   pull_request:
     branches: [master]
 
