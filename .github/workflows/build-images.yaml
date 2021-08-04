@@ -19,8 +19,7 @@ jobs:
         uses: crazy-max/ghaction-docker-meta@v1
         with:
           images: |
-            ghcr.io/hapifhir/hapi
-            docker.io/hapiproject/hapi
+            ghcr.io/duke-crucible/hapi-fhir-jpaserver-starter
           tag-sha: false
           tag-match: "v(.*)"
       # waiting for https://github.com/crazy-max/ghaction-docker-meta/issues/13 for a cleaner solution
@@ -29,8 +28,7 @@ jobs:
         uses: crazy-max/ghaction-docker-meta@v1
         with:
           images: |
-            ghcr.io/hapifhir/hapi
-            docker.io/hapiproject/hapi
+            ghcr.io/duke-crucible/hapi-fhir-jpaserver-starter
           tag-sha: false
           tag-match: "v(.*)"
           sep-tags: -distroless,
